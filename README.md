@@ -211,14 +211,14 @@ plt.show()
 - This method uses the Bing Image Downloader to collect images for each profession. The images are analyzed to see if there is gender bias in the search results.
 - A sample of images is displayed for each profession.
 
-## Setup
+## Installation
+- Install Necessary Package
 ```bash
 !pip install bing-image-downloader
+```
+- Create Image Directory
+```bash
 !mkdir images
-
-
-from bing_image_downloader import downloader
-from IPython.display import Image, display
 ```
 ## Job 1 : Doctor - Image Collection
 
