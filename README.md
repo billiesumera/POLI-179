@@ -16,7 +16,7 @@ For each profession, similarity scores are calculated between the profession and
 ## Setup Instructions
 
 ### Prerequisites
-
+Make sure all of the libraries below are downloaded: 
 - Python 3.x
 - Gensim
 - Matplotlib
