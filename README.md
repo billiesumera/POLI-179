@@ -191,14 +191,3 @@ For each profession, similarity scores are calculated between the profession and
 
 The 2D visualizations of the word vectors for each profession can help understand the relationships between the words.
 
-### Example Visualization
-
-![PCA Visualization](example.png)
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a pull request or open an issue for any suggestions or improvements.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
