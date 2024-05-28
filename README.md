@@ -210,7 +210,8 @@ plt.show()
 # Method 2 - Bing Image Downloader
 - This method uses the Bing Image Downloader to collect images for each profession. The images are analyzed to see if there is gender bias in the search results.
 - A sample of images is displayed for each profession.
-
+- This provides a simple way to download and display images of doctors using the Bing Image Downloader.
+- 
 ## Installation
 - Install Necessary Package
 ```bash
