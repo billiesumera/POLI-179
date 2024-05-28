@@ -298,8 +298,11 @@ reporter_image_files = os.listdir(reporter_images_path)
 ```python
 for reporter_image_file in reporter_image_files[:5]:
     display(Image(filename=os.path.join(reporter_images_path, reporter_image_file)))
-
 ```
+
+# Next Steps 
+- Run a gender classification model to see if there is a gender bias when you search up each profession through Online Images.
+- Compare the results from the model with results from our word embeddings. 
 
 
 
