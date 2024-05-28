@@ -188,12 +188,12 @@ For each profession, similarity scores are calculated between the profession and
     - `dancer` and `him`: 0.169
 
 ## Visualization
-```bash
+```python
 words = professions + males + females
 word_vectors = [model[word] for word in words if word in model.key_to_index]
 ```
 ## PCA for dimensionality reduction to 2D
-```bash
+```python
 pca = PCA(n_components=2)
 word_vecs_2d = pca.fit_transform(word_vectors)
 ```
@@ -279,7 +279,7 @@ teacher_images_path = 'images/teacher'
 teacher_image_files = os.listdir(teacher_images_path)
 ```
 - Display the first 5 images as a sample
-```bash
+```python
 for teacher_image_file in teacher_image_files[:5]:
     display(Image(filename=os.path.join(teacher_images_path, teacher_image_file)))
 
@@ -289,13 +289,13 @@ from IPython.display import Image, display
 ## Job 4 : Reporter - Image Collection
 
 - Download images for the profession 'reporter'
-```bash
+```python
 downloader.download("reporter", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
 reporter_images_path = 'images/reporter'
 reporter_image_files = os.listdir(reporter_images_path)
 ```
 - Display the first 5 images as a sample
-```bash
+```python
 for reporter_image_file in reporter_image_files[:5]:
     display(Image(filename=os.path.join(reporter_images_path, reporter_image_file)))
 
