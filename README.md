@@ -198,7 +198,7 @@ pca = PCA(n_components=2)
 word_vecs_2d = pca.fit_transform(word_vectors)
 ```
 ## Plotting
-```bash
+```python
 plt.figure(figsize=(10, 6))
 for word, coord in zip(words, word_vecs_2d):
     x, y = coord
@@ -224,13 +224,13 @@ plt.show()
 ## Job 1 : Doctor - Image Collection
 
 - Download images for the profession 'doctor'
-```bash
+```python
 downloader.download("doctor", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
 doctor_images_path = 'images/doctor'
 doctor_image_files = os.listdir(doctor_images_path)
 ```
 - Display the first 5 images as a sample
-```bash
+```python
 for doctor_image_file in doctor_image_files[:5]:
     display(Image(filename=os.path.join(doctor_images_path, doctor_image_file)))
 from bing_image_downloader import downloader
@@ -239,14 +239,14 @@ from IPython.display import Image, display
 ## Job 2 : Police - Image Collection
 
 - Download images for the profession 'police'
-```bash
+```python
 downloader.download("police", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
 police_images_path = 'images/police'
 police_image_files = os.listdir(police_images_path)
 supported_formats = ('.png', '.jpg', '.jpeg', '.gif')
 ```
 - Display the first 5 images as a sample
-```bash
+```python
 for police_image_file in police_image_files[:5]:
     if police_image_file.lower().endswith(supported_formats):
         display(Image(filename=os.path.join(police_images_path, police_image_file)))
@@ -257,13 +257,13 @@ from IPython.display import Image, display
 ## Job 3 : Dancer - Image Collection
 
 - Download images for the profession 'dancer'
-```bash
+```python
 downloader.download("dancer", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
 dancer_images_path = 'images/dancer'
 dancer_image_files = os.listdir(dancer_images_path)
 ```
 - Display the first 5 images as a sample
-```bash
+```python
 for dancer_image_file in dancer_image_files[:5]:
     display(Image(filename=os.path.join(dancer_images_path, dancer_image_file)))
 
@@ -273,7 +273,7 @@ from IPython.display import Image, display
 ## Job 4 : Teacher - Image Collection
 
 - Download images for the profession 'teacher'
-```bash
+```python
 downloader.download("teacher", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
 teacher_images_path = 'images/teacher'
 teacher_image_files = os.listdir(teacher_images_path)
