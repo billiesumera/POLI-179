@@ -323,7 +323,7 @@ https://github.com/dchen236/FairFace
   pip install dlib
     ```
 
-References
+## References
 Guilbeault, D., Delecourt, S., Hull, T. et al. Online images amplify gender bias. Nature 626, 1049–1055 (2024). https://doi.org/10.1038/s41586-024-07068-x
 
 https://huggingface.co/Dhrumit1314/Age_and_Gender_Detection/blob/main/Facial_Age_and_Gender_Detection.py
