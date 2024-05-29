@@ -304,6 +304,12 @@ for reporter_image_file in reporter_image_files[:5]:
 - Run a gender classification model to see if there is a gender bias when you search up each profession through Online Images.
 - Compare the results from the model with results from our word embeddings. 
 
-
+## FairFace Prediction
+- Step 1: Clone the Repository
+- First, clone the FairFace repository from GitHub:
+  ```python
+  git clone https://github.com/dchen236/FairFace.git
+  pip install dlib
+    ```
 
 
