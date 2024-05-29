@@ -322,7 +322,13 @@ https://github.com/dchen236/FairFace
   git clone https://github.com/dchen236/FairFace.git
   pip install dlib
     ```
-
+ @inproceedings{karkkainenfairface,
+  title={FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation},
+  author={Karkkainen, Kimmo and Joo, Jungseock},
+  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
+  year={2021},
+  pages={1548--1558}
+}
 ## References
 Guilbeault, D., Delecourt, S., Hull, T. et al. Online images amplify gender bias. Nature 626, 1049–1055 (2024). https://doi.org/10.1038/s41586-024-07068-x
 
