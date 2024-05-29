@@ -302,7 +302,8 @@ for reporter_image_file in reporter_image_files[:5]:
 
 # Next Steps 
 - Run a gender classification model to see if there is a gender bias when you search up each profession through Online Images.
-- Compare the results from the model with results from our word embeddings. 
+- Compare the results from the model with results from our word embeddings.
+- We are plannning to use the FairFace model below, but are having challenges printing the outputs
 
 ## FairFace Prediction
 - Step 1: Clone the Repository
