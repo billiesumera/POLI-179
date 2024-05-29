@@ -1,8 +1,8 @@
 # Through the Lens: Exploring Gender Bias in Online Images  
 Partners:    Billie Sumera (ID: A18133095)   &   Pauline Ramos (ID: A17091192)
-###Research Questions
+### Research Questions
 Do online images exacerbate gender bias based on profession? 
-###Description of Data 
+### Description of Data 
 
 - Data 1   Top 100 image results when you search the word "doctor," “police,” “teacher,” “reporter” and “dancer” 
 - Data 2   We will utilize the "word2vec-google-news-300" model, a pre-trained Word2Vec model provided by Google and accessed through the Gensim API. This model is trained on a portion of the Google News dataset, containing about 100 billion words, and includes word vectors for a vocabulary of 3 million words and phrases.
