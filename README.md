@@ -309,19 +309,88 @@ for reporter_image_file in reporter_image_files[:5]:
     display(Image(filename=os.path.join(reporter_images_path, reporter_image_file)))
 ```
 
-# Next Steps 
-- Run a gender classification model to see if there is a gender bias when you search up each profession through Online Images.
-- Compare the results from the model with results from our word embeddings.
-- We are plannning to use the FairFace model below, but are having challenges printing the outputs
+## Method 2: FairFace Gender Prediction
+# Bing Image Collection and Libraries
+- download relevant libraries
+```python
+!pip install pandas
+    !pip install pillow
 
-## FairFace Prediction
-https://github.com/dchen236/FairFace
-- Step 1: Clone the Repository
-- First, clone the FairFace repository from GitHub:
-  ```python
-  git clone https://github.com/dchen236/FairFace.git
-  pip install dlib
-    ```
+import os
+import pandas as pd
+import numpy as np
+from PIL import Image, ImageDraw, ImageFont
+import matplotlib.pyplot as plt
+import shutil
+```
+- Download Bing-Image Downloader
+```python
+! pip install bing-image-downloader
+from bing_image_downloader import downloader
+```
+- Mount the Google Drive
+```python
+# Mount Google Drive
+from google.colab import drive
+drive.mount('/content/drive/')
+
+! mkdir images
+``` 
+## FairFace Model and Libraries
+- Clone the Fairface Repository from GitHub
+```python
+! git clone https://github.com/dchen236/FairFace.git
+! pip install dlib
+%cd FairFace
+
+!ls
+```
+-
+# Mount Google Drive
+```python
+from google.colab import drive
+drive.mount('/content/drive/', force_remount=True)
+```
+
+# Define the paths
+```python
+import os
+import shutil
+```
+
+# Define the path to the Google Drive project folder
+```python
+drive_project_path = '/content/drive/My Drive/POLI_179_Project'
+```
+
+# Define the model file paths in Google Drive
+```python
+model_files = [
+    'fairface_alldata_20191111.pt',
+    'fairface_alldata_4race_20191111.pt'
+]
+```
+
+# Define the destination directory in FairFace project
+```python
+fairface_model_dir = '/content/FairFace/fair_face_models'
+```
+
+# Create the destination directory if it doesn't exist
+```python
+os.makedirs(fairface_model_dir, exist_ok=True)
+```
+
+# Copy each model file from Google Drive to the FairFace directory
+```python
+for model_file in model_files:
+    model_file_drive_path = os.path.join(drive_project_path, model_file)
+    model_file_fairface_path = os.path.join(fairface_model_dir, model_file)
+
+    shutil.copy(model_file_drive_path, model_file_fairface_path)
+    print(f"Model file {model_file} copied to: {model_file_fairface_path}")
+```
+
  @inproceedings{karkkainenfairface,
   title={FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation},
   author={Karkkainen, Kimmo and Joo, Jungseock},
