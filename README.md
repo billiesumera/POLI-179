@@ -216,105 +216,31 @@ for word, coord in zip(words, word_vecs_2d):
 plt.title('2D Visualization of Word Vectors using PCA')
 plt.show()
 ```
-# Method 2 - Bing Image Downloader
-- This method uses the Bing Image Downloader to collect images for each profession. The images are analyzed to see if there is gender bias in the search results.
-- A sample of images is displayed for each profession.
-- This provides a simple way to download and display images of doctors using the Bing Image Downloader.
-- 
-## Installation
-- Install Necessary Package
-```bash
-!pip install bing-image-downloader
-```
-- Create Image Directory
-```bash
-!mkdir images
-```
-## Job 1 : Doctor - Image Collection
-
-- Download images for the profession 'doctor'
-```python
-downloader.download("doctor", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
-doctor_images_path = 'images/doctor'
-doctor_image_files = os.listdir(doctor_images_path)
-```
-- Display the first 5 images as a sample
-```python
-for doctor_image_file in doctor_image_files[:5]:
-    display(Image(filename=os.path.join(doctor_images_path, doctor_image_file)))
-from bing_image_downloader import downloader
-from IPython.display import Image, display
-```
-## Job 2 : Police - Image Collection
-
-- Download images for the profession 'police'
-```python
-downloader.download("police", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
-police_images_path = 'images/police'
-police_image_files = os.listdir(police_images_path)
-supported_formats = ('.png', '.jpg', '.jpeg', '.gif')
-```
-- Display the first 5 images as a sample
-```python
-for police_image_file in police_image_files[:5]:
-    if police_image_file.lower().endswith(supported_formats):
-        display(Image(filename=os.path.join(police_images_path, police_image_file)))
-
-from bing_image_downloader import downloader
-from IPython.display import Image, display
-```
-## Job 3 : Dancer - Image Collection
-
-- Download images for the profession 'dancer'
-```python
-downloader.download("dancer", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
-dancer_images_path = 'images/dancer'
-dancer_image_files = os.listdir(dancer_images_path)
-```
-- Display the first 5 images as a sample
-```python
-for dancer_image_file in dancer_image_files[:5]:
-    display(Image(filename=os.path.join(dancer_images_path, dancer_image_file)))
-
-from bing_image_downloader import downloader
-from IPython.display import Image, display
-```
-## Job 4 : Teacher - Image Collection
-
-- Download images for the profession 'teacher'
-```python
-downloader.download("teacher", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
-teacher_images_path = 'images/teacher'
-teacher_image_files = os.listdir(teacher_images_path)
-```
-- Display the first 5 images as a sample
-```python
-for teacher_image_file in teacher_image_files[:5]:
-    display(Image(filename=os.path.join(teacher_images_path, teacher_image_file)))
-
-from bing_image_downloader import downloader
-from IPython.display import Image, display
-```
-## Job 4 : Reporter - Image Collection
-
-- Download images for the profession 'reporter'
-```python
-downloader.download("reporter", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
-reporter_images_path = 'images/reporter'
-reporter_image_files = os.listdir(reporter_images_path)
-```
-- Display the first 5 images as a sample
-```python
-for reporter_image_file in reporter_image_files[:5]:
-    display(Image(filename=os.path.join(reporter_images_path, reporter_image_file)))
-```
 
 ## Method 2: FairFace Gender Prediction
-# Bing Image Collection and Libraries
-- download relevant libraries
+Step 1: Bing Image Collection and Libraries
+- This method uses the Bing Image Downloader to collect images for each profession. The images are analyzed to see if there is gender bias in the search results.
+- A sample of images is displayed for each profession.
+- This provides a simple way to download and display images of 'doctor', 'police', 'dancer', 'teacher', and 'reporter' using the Bing Image Downloader.
+Step 2: Using the FairFace Model
+- The model can be described by the following steps:
+    1. **Preprocess the Image:** Resize and normalize the input image to 224x224 pixels.
+    2. **Forward Pass:** Pass the image through the pre-trained ResNet34 model.
+        - The FairFace model uses a pre-trained ResNet34 architecture, which is a type of Convolutional Neural Network (CNN). 
+            - Dlib Face Detection Model - mmod_human_face_detector.dat
+                - Purpose: Detects faces in an image
+            - Dlib Shape Predictor Model - shape_predictor_5_face_landmarks.dat
+                - Purpose: Predicts key landmarks on the detected faces for alignment
+    3. **Extract Predictions:** Obtain scores for race, gender, and age categories.
+    4. **Softmax:** Convert scores to probabilities.
+        - ensures that the output values are between 0 and 1 and sum to 100%.
+    5. **Determine Predicted Class:** The predicted class for each attribute (race, gender, age) is the one with the highest probability.
+    6. **Map to Labels:** Convert class indices to meaningful labels.
+
+Install relevant libraries and packages
 ```python
 !pip install pandas
-    !pip install pillow
+!pip install pillow
 
 import os
 import pandas as pd
