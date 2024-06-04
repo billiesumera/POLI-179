@@ -395,6 +395,169 @@ for model_file in model_files:
     shutil.copy(model_file_drive_path, model_file_fairface_path)
     print(f"Model file {model_file} copied to: {model_file_fairface_path}")
 ```
+Define the path to the test outputs CSV file
+```python
+# Define the path to the test outputs CSV file
+test_outputs_csv_path = '/content/FairFace/test_outputs.csv'
+
+# Clear the contents of the file
+with open(test_outputs_csv_path, 'w') as file:
+    file.truncate(0)
+
+print(f"Cleared the contents of {test_outputs_csv_path}")
+```
+Clear the detected_faces directory
+```python
+# Clear the detected_faces directory
+if os.path.exists(detected_faces_dir):
+    for file_name in os.listdir(detected_faces_dir):
+        file_path = os.path.join(detected_faces_dir, file_name)
+        if os.path.isfile(file_path):
+            os.unlink(file_path)
+        elif os.path.isdir(file_path):
+            shutil.rmtree(file_path)
+    print(f"Cleared the directory: {detected_faces_dir}")
+else:
+    os.makedirs(detected_faces_dir)
+    print(f"Created the directory: {detected_faces_dir}")
+```
+## Job 1: Doctor
+Download Top 100 photos for 'doctor'
+```python
+from bing_image_downloader import downloader
+downloader.download("doctor", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
+```
+```python
+!ls 'images'/'doctor'
+```
+Mount Google Drive
+```python
+# Mount Google Drive
+from google.colab import drive
+drive.mount('/content/drive/', force_remount=True)
+
+# Define the correct directory containing the images
+doctor_image_dir = 'images/doctor'
+
+# Verify the directory exists
+if os.path.exists(doctor_image_dir):
+    # Get the list of image file names
+    doctor_image_files = os.listdir(doctor_image_dir)
+
+    # Create a DataFrame with the full image paths
+    doctor_df = pd.DataFrame([{'img_path': os.path.join(doctor_image_dir, img)} for img in doctor_image_files])
+
+    # Define the path to save the CSV file in Google Drive
+    doctor_csv_path = '/content/drive/My Drive/doctor_images.csv'
+
+    # Save the DataFrame as a CSV file
+    doctor_df.to_csv(doctor_csv_path, index=False)
+
+    print(f"DataFrame saved as CSV file at: {doctor_csv_path}")
+else:
+    print(f"The directory {doctor_image_dir} does not exist.")
+```
+## Gender Detection: Doctor
+Using FairFace Model to classify the image as 'female' or 'male'
+```python
+# Define the path to the CSV file in Google Drive
+doctor_csv_path = '/content/drive/My Drive/doctor_images.csv'
+
+# Define the path to the FairFace directory
+fairface_dir = '/content/FairFace/'
+
+# Verify the FairFace directory exists
+if os.path.exists(fairface_dir):
+    # Define the destination path for the CSV file in the FairFace directory
+    fairface_csv_path = os.path.join(fairface_dir, 'doctor_images.csv')
+
+    # Copy the CSV file to the FairFace directory
+    shutil.copy(doctor_csv_path, fairface_csv_path)
+
+    print(f"CSV file copied to: {fairface_csv_path}")
+else:
+    print(f"The directory {fairface_dir} does not exist.")
+```
+Defining the path for the CSV file of saved photos
+```python
+# Define the path to the test outputs CSV file
+test_outputs_csv_path = '/content/FairFace/test_outputs.csv'
+
+# Clear the contents of the file
+with open(test_outputs_csv_path, 'w') as file:
+    file.truncate(0)
+
+print(f"Cleared the contents of {test_outputs_csv_path}")
+```
+Using the model to predict the images' gender
+```python
+%cd /content/FairFace
+
+!python3 predict.py --csv "doctor_images.csv"
+```
+Filtering the images identified with detected faces
+```python
+# Define the path to the test outputs CSV file
+test_outputs_csv_path = '/content/FairFace/test_outputs.csv'
+
+# Read the CSV file into a DataFrame
+predictions_df = pd.read_csv(test_outputs_csv_path)
+
+# Function to display an image with a title
+def display_image_with_title(image_path, title):
+    img = Image.open(image_path)
+    plt.imshow(img)
+    plt.title(title)
+    plt.axis('off')  # Hide the axis
+    plt.show()
+
+# Define the path to the directory where detected faces are saved
+detected_faces_dir = '/content/FairFace/detected_faces'
+
+# Use the correct column names from the CSV
+image_path_column = 'face_name_align'  # Correct column name for image paths
+gender_column = 'gender'  # Column name for gender predictions
+
+# Filter and display only the detected faces from "doctor" images with gender predictions
+doctor_image_prefix = "Image_"
+for index, row in predictions_df.iterrows():
+    # Construct the file name and path
+    image_name = os.path.basename(row[image_path_column])
+    if image_name.startswith(doctor_image_prefix):
+        image_path = os.path.join(detected_faces_dir, image_name)
+        gender_prediction = row[gender_column]
+        title = f"Gender: {gender_prediction}"
+        print(f"Displaying image: {image_name} with gender prediction: {gender_prediction}")
+        display_image_with_title(image_path, title)
+```
+Displaying the gender distribution from the model
+```python
+# Define the path to the test outputs CSV file
+test_outputs_csv_path = '/content/FairFace/test_outputs.csv'
+
+# Read the CSV file into a DataFrame
+predictions_df = pd.read_csv(test_outputs_csv_path)
+
+# Display the first few rows to verify
+print(predictions_df.head())
+
+# Calculate the gender distribution
+gender_distribution = predictions_df['gender'].value_counts()
+
+# Display the gender distribution
+print(gender_distribution)
+
+# Plot the gender distribution
+plt.figure(figsize=(8, 6))
+gender_distribution.plot(kind='bar', color=['blue', 'pink'])
+plt.title('Gender Distribution')
+plt.xlabel('Gender')
+plt.ylabel('Count')
+plt.xticks(rotation=0)
+plt.show()
+```
+
+
 
  @inproceedings{karkkainenfairface,
   title={FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation},
