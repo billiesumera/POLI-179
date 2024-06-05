@@ -1,6 +1,6 @@
 # Through the Lens: Exploring Gender Bias in Online Images  
 Partners:    Billie Sumera (ID: A18133095)   &   Pauline Ramos (ID: A17091192)
-### Research Questions
+### Research Question
 Do online images exacerbate gender bias based on profession? 
 ### Description of Data 
 
@@ -9,7 +9,7 @@ Do online images exacerbate gender bias based on profession?
 
 # Gender Bias Analysis
 
-This project analyzes gender bias in word embeddings using the pre-trained Word2Vec model. It calculates the cosine similarity between profession-related words and gender-related words to measure bias. Visualizations using PCA (Principal Component Analysis) are also provided to help understand the relationships between words in a 2D space.
+This project analyzes gender bias in word embeddings using the pre-trained Word2Vec model. It calculates the cosine similarity between profession-related words and gender-related words to measure bias. Visualizations using PCA (Principal Component Analysis) are also provided to help understand the relationships between words in a 2D space. The 
 
 ## Project Description
 
@@ -635,6 +635,180 @@ plt.ylabel('Count')
 plt.xticks(rotation=0)
 plt.show()
 ```
+## Job 3: Dancer
+Downloading the top 100 images for 'dancer'
+```python
+downloader.download("dancer", limit=100,  output_dir='images', adult_filter_off=True, force_replace=False)
+```
+Looking at the contents of dancer in the 'images' directory
+```python
+!ls 'images'/'dancer'
+```
+List the files and verify that all .gif files have been removed from directory
+```python
+image_dir = '/content/FairFace/images/dancer'
+
+# List all files in the directory
+all_files = os.listdir(image_dir)
+
+# Filter out and delete .gif files
+gif_files = [f for f in all_files if f.lower().endswith('.gif')]
+
+for gif_file in gif_files:
+    gif_file_path = os.path.join(image_dir, gif_file)
+    os.remove(gif_file_path)
+    print(f"Removed GIF file: {gif_file_path}")
+
+# Verify that all .gif files have been removed
+remaining_files = [f for f in os.listdir(image_dir) if f.lower().endswith('.gif')]
+if not remaining_files:
+    print("All .gif files have been successfully removed.")
+else:
+    print("Some .gif files could not be removed:", remaining_files)
+```
+Mount Google Drive and save the contents in a CSV file containing
+```python
+# Mount Google Drive
+from google.colab import drive
+drive.mount('/content/drive/', force_remount=True)
+
+# Define the correct directory containing the images
+dancer_image_dir = 'images/dancer'
+
+# Verify the directory exists
+if os.path.exists(dancer_image_dir):
+    # Get the list of image file names
+    dancer_image_files = os.listdir(dancer_image_dir)
+
+    # Create a DataFrame with the full image paths
+    dancer_df = pd.DataFrame([{'img_path': os.path.join(dancer_image_dir, img)} for img in dancer_image_files])
+
+    # Define the path to save the CSV file in Google Drive
+    dancer_csv_path = '/content/drive/My Drive/dancer_images.csv'
+
+    # Save the DataFrame as a CSV file
+    dancer_df.to_csv(dancer_csv_path, index=False)
+
+    print(f"DataFrame saved as CSV file at: {dancer_csv_path}")
+else:
+    print(f"The directory {dancer_image_dir} does not exist.")
+```
+## Gender Detection: Dancer
+Define the path and verify the FairFace directory exists for the dancer_images.csv
+```python
+ Define the path to the CSV file in Google Drive
+dancer_csv_path = '/content/drive/My Drive/dancer_images.csv'
+
+# Define the path to the FairFace directory
+fairface_dir = '/content/FairFace/'
+
+# Verify the FairFace directory exists
+if os.path.exists(fairface_dir):
+    # Define the destination path for the CSV file in the FairFace directory
+    fairface_csv_path = os.path.join(fairface_dir, 'dancer_images.csv')
+
+    # Copy the CSV file to the FairFace directory
+    shutil.copy(dancer_csv_path, fairface_csv_path)
+
+    print(f"CSV file copied to: {fairface_csv_path}")
+else:
+    print(f"The directory {fairface_dir} does not exist.")
+```
+Define the path to the test outputs CSV file and clear its contents
+```python
+test_outputs_csv_path = '/content/FairFace/test_outputs.csv'
+
+# Clear the contents of the file
+with open(test_outputs_csv_path, 'w') as file:
+    file.truncate(0)
+
+print(f"Cleared the contents of {test_outputs_csv_path}")
+```
+Clear the detected_faces directory
+```python
+# Clear the detected_faces directory
+if os.path.exists(detected_faces_dir):
+    for file_name in os.listdir(detected_faces_dir):
+        file_path = os.path.join(detected_faces_dir, file_name)
+        if os.path.isfile(file_path):
+            os.unlink(file_path)
+        elif os.path.isdir(file_path):
+            shutil.rmtree(file_path)
+    print(f"Cleared the directory: {detected_faces_dir}")
+else:
+    os.makedirs(detected_faces_dir)
+    print(f"Created the directory: {detected_faces_dir}")
+```
+Use the model to predict the gender_images.csv file
+```python
+%cd /content/FairFace
+
+!python3 predict.py --csv "dancer_images.csv"
+```
+Filter and only display images with detected faces
+``` python
+# Define the path to the test outputs CSV file
+test_outputs_csv_path = '/content/FairFace/test_outputs.csv'
+
+# Read the CSV file into a DataFrame
+predictions_df = pd.read_csv(test_outputs_csv_path)
+
+# Function to display an image with a title
+def display_image_with_title(image_path, title):
+    img = Image.open(image_path)
+    plt.imshow(img)
+    plt.title(title)
+    plt.axis('off')  # Hide the axis
+    plt.show()
+
+# Define the path to the directory where detected faces are saved
+detected_faces_dir = '/content/FairFace/detected_faces'
+
+# Use the correct column names from the CSV
+image_path_column = 'face_name_align'  # Correct column name for image paths
+gender_column = 'gender'  # Column name for gender predictions
+
+# Filter and display only the detected faces from "doctor" images with gender predictions
+doctor_image_prefix = "Image_"
+for index, row in predictions_df.iterrows():
+    # Construct the file name and path
+    image_name = os.path.basename(row[image_path_column])
+    if image_name.startswith(doctor_image_prefix):
+        image_path = os.path.join(detected_faces_dir, image_name)
+        gender_prediction = row[gender_column]
+        title = f"Gender: {gender_prediction}"
+        print(f"Displaying image: {image_name} with gender prediction: {gender_prediction}")
+        display_image_with_title(image_path, title)
+```
+Save contents to file and generate plot to show gender distribution
+```python
+# Define the path to the test outputs CSV file
+test_outputs_csv_path = '/content/FairFace/test_outputs.csv'
+
+# Read the CSV file into a DataFrame
+predictions_df = pd.read_csv(test_outputs_csv_path)
+
+# Display the first few rows to verify
+print(predictions_df.head())
+
+# Calculate the gender distribution
+gender_distribution = predictions_df['gender'].value_counts()
+
+# Display the gender distribution
+print(gender_distribution)
+
+# Plot the gender distribution
+plt.figure(figsize=(8, 6))
+gender_distribution.plot(kind='bar', color=['pink', 'blue'])
+plt.title('Gender Distribution')
+plt.xlabel('Gender')
+plt.ylabel('Count')
+plt.xticks(rotation=0)
+plt.show()
+```
+
+
+
 
 
  @inproceedings{karkkainenfairface,
