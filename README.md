@@ -2,6 +2,8 @@
 
 Partners:    Billie Sumera (ID: A18133095)   &   Pauline Ramos (ID: A17091192)
 
+<img width="724" alt="doctor" src="https://github.com/billiesumera/POLI-179/assets/166160863/1dde90d9-6def-44cf-a766-4870244e6eee">
+
 Link to Google Drive Folder:
 ([HERE](https://drive.google.com/drive/folders/1zlHfmzSYK3tYoJnXmzWJl4isqDU1d7_f?usp=drive_link)) 
 
