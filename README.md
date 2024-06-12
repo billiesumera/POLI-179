@@ -18,12 +18,7 @@ We hypothesize that the proliferation of images does increase gender bias. When 
 - Data 1   Top 100 image results when you search the word "doctor," “police,” “teacher,” “reporter” and “dancer” 
 - Data 2   We will utilize the "word2vec-google-news-300" model, a pre-trained Word2Vec model provided by Google and accessed through the Gensim API. This model is trained on a portion of the Google News dataset, containing about 100 billion words, and includes word vectors for a vocabulary of 3 million words and phrases.
 
-# Gender Bias Analysis
-
-This project analyzes gender bias in word embeddings using the pre-trained Word2Vec model. It calculates the cosine similarity between profession-related words and gender-related words to measure bias. Visualizations using PCA (Principal Component Analysis) are also provided to help understand the relationships between words in a 2D space. We will compare these results to gender distribution accross searched images.
-
-## Project Description
-
+# Methods
 ### Method 1 Overview
 Method 1 of this project uses the Word2Vec model from the Gensim library, which is pre-trained on large datasets such as Google News and Wikipedia. The following professions are analyzed:
 - Doctor
