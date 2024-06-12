@@ -455,6 +455,7 @@ for index, row in predictions_df.iterrows():
         print(f"Displaying image: {image_name} with gender prediction: {gender_prediction}")
         display_image_with_title(image_path, title)
 ```
+### Example of Output - Doctor
 <img width="347" alt="Screenshot 2024-06-12 at 10 29 19 AM" src="https://github.com/billiesumera/POLI-179/assets/166160863/0a73a375-ae46-4c7d-8aa9-aa87ce5f55f9">
 
 Displaying the gender distribution from the model
