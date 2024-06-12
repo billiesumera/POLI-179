@@ -2,7 +2,7 @@
 
 Partners:    Billie Sumera (ID: A18133095)   &   Pauline Ramos (ID: A17091192)
 
-<img width="724" alt="doctor" src="https://github.com/billiesumera/POLI-179/assets/166160863/1dde90d9-6def-44cf-a766-4870244e6eee">
+<img width="801" alt="percentscores" src="https://github.com/billiesumera/POLI-179/assets/166160863/fe32e4ec-3f09-4bdf-a5d4-14037893f572">
 
 Link to Google Drive Folder:
 ([HERE](https://drive.google.com/drive/folders/1zlHfmzSYK3tYoJnXmzWJl4isqDU1d7_f?usp=drive_link)) 
@@ -493,7 +493,7 @@ plt.show()
 
 <img width="801" alt="percentscores" src="https://github.com/billiesumera/POLI-179/assets/166160863/fe32e4ec-3f09-4bdf-a5d4-14037893f572">
 
-Gender Bias is much more prevalent and potent than in text.
+Our Conclusion: Gender Bias is much more prevalent and potent than in text.
 
  @inproceedings{karkkainenfairface,
   title={FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation},
