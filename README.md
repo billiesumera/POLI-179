@@ -13,7 +13,7 @@ This project analyzes gender bias in word embeddings using the pre-trained Word2
 
 ## Project Description
 
-The project uses the Word2Vec model from the Gensim library, which is pre-trained on large datasets such as Google News and Wikipedia. The following professions are analyzed:
+Method 1 of this project uses the Word2Vec model from the Gensim library, which is pre-trained on large datasets such as Google News and Wikipedia. The following professions are analyzed:
 - Doctor
 - Police
 - Teacher
@@ -21,6 +21,10 @@ The project uses the Word2Vec model from the Gensim library, which is pre-traine
 - Dancer
 
 For each profession, similarity scores are calculated between the profession and gender-related words (both male and female). The results are visualized using PCA.
+
+Next, for comparison with Method 2, percentages were calculated by taking these similarity scores and normalizing them to a 0-100 scale, where 0 represents maximum similarity to female words and 100 represents maximum similarity to male words.
+
+Method 2 of this project uses the Bing Image Downloader to collect images for each profession. Each image is fed through Fairface gender detection model. The gender distribution is calculated into a percentage where 100 means all male photos.
 
 ## Setup Instructions
 
