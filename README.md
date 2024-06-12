@@ -32,9 +32,9 @@ For each profession, similarity scores are calculated between the profession and
 Next, for comparison with Method 2, percentages were calculated by taking these similarity scores and normalizing them to a 0-100 scale, where 0 represents maximum similarity to female words and 100 represents maximum similarity to male words.
 
 ### Method 2 Overview
-Method 2 of this project uses the Bing Image Downloader to collect images for each profession. Each image is fed through Fairface gender detection model. The gender distribution is calculated into a percentage where 100 means all male photos.
+Method 2 of this project uses the Bing Image Downloader to collect images for each profession. Each image is fed through Fairface gender detection model. The gender distribution is calculated into a percentage where 100 means all male photos and 0 means all female images.
 
-FairFace Model:
+Link to FairFace Model:
 [https://github.com/dchen236/FairFace] 
 
 ## Setup Instructions
