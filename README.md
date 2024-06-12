@@ -36,7 +36,7 @@ Next, for comparison with Method 2, percentages were calculated by taking these 
 Method 2 of this project uses the Bing Image Downloader to collect images for each profession. Each image is fed through Fairface gender detection model. The gender distribution is calculated into a percentage where 100 means all male photos.
 
 FairFace Model:
-[https://github.com/dchen236/FairFace]([url](https://github.com/dchen236/FairFace))
+[https://github.com/dchen236/FairFace] ([url](https://github.com/dchen236/FairFace))
 
 ## Setup Instructions
 
