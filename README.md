@@ -502,7 +502,7 @@ plt.show()
 
 <img width="801" alt="percentscores" src="https://github.com/billiesumera/POLI-179/assets/166160863/fe32e4ec-3f09-4bdf-a5d4-14037893f572">
 
-
+Gender Bias is much more prevalent and potent than in text.
 
  @inproceedings{karkkainenfairface,
   title={FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation},
