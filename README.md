@@ -1,4 +1,7 @@
-# Through the Lens: Exploring Gender Bias in Online Images  
+ <img width="801" alt="percentscores" src="https://github.com/billiesumera/POLI-179/assets/166160863/853c5271-d427-4630-b9ac-a9a230a6c3c5">
+
+# Through the Lens: Exploring Gender Bias in Online Images 
+
 Partners:    Billie Sumera (ID: A18133095)   &   Pauline Ramos (ID: A17091192)
 ### Research Question
 Do online images exacerbate gender bias based on profession? 
