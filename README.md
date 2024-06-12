@@ -13,7 +13,7 @@ Do online images exacerbate gender bias based on profession?
 
 # Gender Bias Analysis
 
-This project analyzes gender bias in word embeddings using the pre-trained Word2Vec model. It calculates the cosine similarity between profession-related words and gender-related words to measure bias. Visualizations using PCA (Principal Component Analysis) are also provided to help understand the relationships between words in a 2D space. The 
+This project analyzes gender bias in word embeddings using the pre-trained Word2Vec model. It calculates the cosine similarity between profession-related words and gender-related words to measure bias. Visualizations using PCA (Principal Component Analysis) are also provided to help understand the relationships between words in a 2D space. We will compare these results to gender distribution accross searched images.
 
 ## Project Description
 
