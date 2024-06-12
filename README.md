@@ -1,6 +1,6 @@
 # Through the Lens: Exploring Gender Bias in Online Images 
 
-Partners:    Billie Sumera (ID: A18133095)   &   Pauline Ramos (ID: A17091192)
+Partners:    Billie Sumera   &   Pauline Ramos
 
 <img width="801" alt="percentscores" src="https://github.com/billiesumera/POLI-179/assets/166160863/fe32e4ec-3f09-4bdf-a5d4-14037893f572">
 
@@ -9,6 +9,10 @@ Link to Google Drive Folder:
 
 ### Research Question
 Do online images exacerbate gender bias based on profession? 
+
+### Hypothesis
+We hypothesize that the proliferation of images does increase gender bias. When searching images for professions, this can result in a skewed gender distribution.
+
 ### Description of Data 
 
 - Data 1   Top 100 image results when you search the word "doctor," “police,” “teacher,” “reporter” and “dancer” 
@@ -28,7 +32,7 @@ Method 1 of this project uses the Word2Vec model from the Gensim library, which 
 - Reporter
 - Dancer
 
-For each profession, similarity scores are calculated between the profession and gender-related words (both male and female). The results are visualized using PCA.
+For each profession, similarity scores are calculated between the profession and gender-related words (both male and female). The results are visualized using Principal Component Analysis (PCA).
 
 Next, for comparison with Method 2, percentages were calculated by taking these similarity scores and normalizing them to a 0-100 scale, where 0 represents maximum similarity to female words and 100 represents maximum similarity to male words.
 
@@ -39,14 +43,6 @@ FairFace Model:
 [https://github.com/dchen236/FairFace] 
 
 ## Setup Instructions
-
-### Prerequisites
-
-- Python 3.x
-- Gensim
-- Matplotlib
-- Scipy
-- Scikit-learn
 
 ### Installation
 
@@ -349,7 +345,10 @@ else:
     os.makedirs(detected_faces_dir)
     print(f"Created the directory: {detected_faces_dir}")
 ```
+
+We used the following code (which is shown for 'doctor) for the rest of the professions ('police,''dancer,' 'teacher,' and 'reporter').
 ## Job 1: Doctor
+
 Download Top 100 photos for 'doctor'
 ```python
 from bing_image_downloader import downloader
@@ -495,15 +494,17 @@ plt.show()
 
 Our Conclusion: Gender Bias is much more prevalent and potent than in text.
 
- @inproceedings{karkkainenfairface,
-  title={FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation},
-  author={Karkkainen, Kimmo and Joo, Jungseock},
-  booktitle={Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision},
-  year={2021},
-  pages={1548--1558}
-}
+# Discussions & Conclusion
+## Limitations
+When we were generating the images for 'doctor,' an influx of Doctor Who results popped up due to the promotion of the show. This made it harder to do our analysis because many of the images featured actors from the show. Another limitation was trying to interpret our Word2Vec results as we thought some were unclear.
+
+## Future Work
+In the future, we can feed the images into image captioning using the BLIP-2 model \url{(https://huggingface.co/blog/blip-2)}. By feeding the images into the model, we can use image captioning to generate descriptions of the images to give us further insight in our analysis. As the FairFace model can detect race, we could conduct the same research with distribution among different races to see if there was greater bias in image search versus text.
+
 ## References
 Guilbeault, D., Delecourt, S., Hull, T. et al. Online images amplify gender bias. Nature 626, 1049–1055 (2024). https://doi.org/10.1038/s41586-024-07068-x
+
+Karkkainen, K., & Joo, J. (2021). FairFace: Face Attribute Dataset for Balanced Race, Gender, and Age for Bias Measurement and Mitigation. In Proceedings of the IEEE/CVF Winter Conference on Applications of Computer Vision (pp. 1548-1558).
 
 (https://github.com/dchen236/FairFace)
 
