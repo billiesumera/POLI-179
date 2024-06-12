@@ -123,7 +123,7 @@ FairFace Model:
 
 ## Results
 
-### Doctor
+### Doctor - Percent Score = 
 
 - Similarity with female-related words:
     - `doctor` and `female`: 0.133
@@ -142,7 +142,7 @@ FairFace Model:
 
 <img width="801" alt="doctor_pca" src="https://github.com/billiesumera/POLI-179/assets/166160863/68e5a680-fe1f-43f1-bc4e-169d743e1f31">
 
-### Police
+### Police - Percent Score = 
 
 - Similarity with female-related words:
     - `police` and `female`: 0.141
@@ -160,7 +160,7 @@ FairFace Model:
     - `police` and `he`: 0.224
     - `police` and `him`: 0.253
 
-### Teacher
+### Teacher - Percent Score = 
 
 - Similarity with female-related words:
     - `teacher` and `female`: 0.165
@@ -178,7 +178,7 @@ FairFace Model:
     - `teacher` and `he`: 0.161
     - `teacher` and `him`: 0.177
 
-### Reporter
+### Reporter - Percent Score = 
 
 - Similarity with female-related words:
     - `reporter` and `female`: 0.079
@@ -196,7 +196,7 @@ FairFace Model:
     - `reporter` and `he`: 0.185
     - `reporter` and `him`: 0.207
 
-### Dancer
+### Dancer - Percent Score = 
 
 - Similarity with female-related words:
     - `dancer` and `female`: 0.283
