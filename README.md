@@ -137,6 +137,8 @@ Method 2 of this project uses the Bing Image Downloader to collect images for ea
     - `doctor` and `boy`: 0.341
     - `doctor` and `he`: 0.274
 
+<img width="801" alt="doctor_pca" src="https://github.com/billiesumera/POLI-179/assets/166160863/68e5a680-fe1f-43f1-bc4e-169d743e1f31">
+
 ### Police
 
 - Similarity with female-related words:
@@ -209,26 +211,7 @@ Method 2 of this project uses the Bing Image Downloader to collect images for ea
     - `dancer` and `he`: 0.146
     - `dancer` and `him`: 0.169
 
-## Visualization
-```python
-words = professions + males + females
-word_vectors = [model[word] for word in words if word in model.key_to_index]
-```
-## PCA for dimensionality reduction to 2D
-```python
-pca = PCA(n_components=2)
-word_vecs_2d = pca.fit_transform(word_vectors)
-```
-## Plotting
-```python
-plt.figure(figsize=(10, 6))
-for word, coord in zip(words, word_vecs_2d):
-    x, y = coord
-    plt.scatter(x, y, marker='x', color='blue')
-    plt.text(x + 0.1, y + 0.1, word, fontsize=9)
-plt.title('2D Visualization of Word Vectors using PCA')
-plt.show()
-```
+<img width="801" alt="all_pca" src="https://github.com/billiesumera/POLI-179/assets/166160863/7b865615-e1cf-469d-9f79-bcf6537d700a">
 
 ## Method 2: FairFace Gender Prediction
 **Step 1: Bing Image Collection and Libraries**
