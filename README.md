@@ -213,6 +213,7 @@ FairFace Model:
     - `dancer` and `boy`: 0.279
     - `dancer` and `he`: 0.146
     - `dancer` and `him`: 0.169
+<img width="773" alt="Screenshot 2024-06-12 at 11 22 23 AM" src="https://github.com/billiesumera/POLI-179/assets/166160863/8bc091ea-d2ae-4cda-b8f6-35127455e53d">
 
 <img width="801" alt="all_pca" src="https://github.com/billiesumera/POLI-179/assets/166160863/7b865615-e1cf-469d-9f79-bcf6537d700a">
 
