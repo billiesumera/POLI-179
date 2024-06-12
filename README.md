@@ -4,6 +4,7 @@ Partners:    Billie Sumera (ID: A18133095)   &   Pauline Ramos (ID: A17091192)
 
  <img width="600" alt="percentscores" src="https://github.com/billiesumera/POLI-179/assets/166160863/853c5271-d427-4630-b9ac-a9a230a6c3c5">
 
+Link to [Google Drive Folder]([url](https://drive.google.com/drive/folders/1zlHfmzSYK3tYoJnXmzWJl4isqDU1d7_f?usp=drive_link)) 
 ### Research Question
 Do online images exacerbate gender bias based on profession? 
 ### Description of Data 
