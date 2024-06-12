@@ -487,6 +487,7 @@ plt.show()
 ```
 # Results
 
+<img width="801" alt="percentscores" src="https://github.com/billiesumera/POLI-179/assets/166160863/fe32e4ec-3f09-4bdf-a5d4-14037893f572">
 
 
 
